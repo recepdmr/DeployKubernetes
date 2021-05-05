@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  # deployment name
+  name: hello-k8s-deployment
+spec:
+  selector:
+    matchLabels:
+      # pod name
+      app: hello-k8s-pod
+  template:
+    metadata:
+      labels:
+        #pod name
+        app: hello-k8s-pod
+    spec:
+      containers:
+        #container name 
+      - name: hello-k8s-container
+        # container image
+        image: hello-k8s-image:v1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
